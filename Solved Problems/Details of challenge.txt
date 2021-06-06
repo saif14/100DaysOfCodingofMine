@@ -1,0 +1,6 @@
+Every solved problem should be named like this:
+
+[serial_number].[brie_name_of_the_problem]_[date].cpp
+
+
+At least one problem a day will keep the inefficiency away. ^_^
