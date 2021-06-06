@@ -2,12 +2,14 @@
 
 using namespace std;
 
-void fun(int n)
+int fun(int n)
 {
+    static int x = 0;
     if(n>0)
     {
-        cout<<n<<" ";
-        fun(n-1);
+        x++;
+        
+        return fun(n-1)+x;
     }
 
 
@@ -15,5 +17,5 @@ void fun(int n)
 
 int main()
 {
-    fun(3);
+    cout<<"value "<<fun(5);
 }
