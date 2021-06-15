@@ -38,10 +38,25 @@ void displayLinkedList(linkedlist *t)
     }
 }
 
+//Recursively Displaying linkedlist
+
+void displayLinkedListRecursively(linkedlist *t)
+{
+    if(t!=NULL)
+    {
+        cout<<t->data<<" ";
+        displayLinkedListRecursively(t->next);
+    }
+
+}
+
 int main()
 {
     int A [] = {3,5,6,7,8};
     create(A,5);
     displayLinkedList(head);
+    cout<<endl;
+    cout<<"After calling recursive display: ";
+    displayLinkedListRecursively(head);
 
 }
