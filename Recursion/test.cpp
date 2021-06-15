@@ -6,5 +6,8 @@ using namespace std;
 
 int main()
 {
-    cout<<1/10;
+    int *p = new int[5];
+    p[0] = 5;
+    p[2] = 7;
+    cout<<p[1];
 }
