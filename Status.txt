@@ -1,3 +1,6 @@
+16-06-2021
+1. Linkedlist Covered upto 31 --> reversing a linked linkedlist
+
 15-06-2021
 1. Completed Recursion
 2. Moved to linkedlist. Covered recursively display linkedlist
