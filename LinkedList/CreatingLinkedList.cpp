@@ -196,10 +196,47 @@ void insert(linkedlist *p, int index, int x)
         p->next=temp;
 
     }
+}
 
-    
+//Reversing a linked list
 
+void reverseIter(linkedlist *p)
+{
+    linkedlist *q=NULL, *r=NULL;
+     while(p!=NULL)
+     {
+         r=q;
+         q=p;
+         p=p->next;
+         q->next=r;
+     }
+     head = q;
+}
 
+void reverseRecur(linkedlist *q, linkedlist *curPointer)
+{
+    if(curPointer)
+    {
+        reverseRecur(curPointer, curPointer->next);
+        curPointer->next=q;
+    }
+    else
+    head = q;
+
+}
+
+linkedlist * convertNumToLinkedList(linkedlist *res, int n)
+{
+    while(n > 0)
+        {
+            linkedlist *temp = new linkedlist();
+            temp -> data = n%10;
+            temp ->next = NULL;
+            cout<<"Checking: "<<temp->data<<endl;
+            n = n/10;
+            res->next = temp;
+        }
+    return res;
 }
 
 
@@ -249,10 +286,28 @@ int main()
     // cout<<endl;
 
     //Creating a new linked list using inset
-    insert(head, 0, 10);
-    insert(head, 1, 20);
-    insert(head, 2, 30);
+    // insert(head, 0, 10);
+    // insert(head, 1, 20);
+    // insert(head, 2, 30);
+    // insert(head, 3, 40);
+    // insert(head, 4, 50);
+    // insert(head, 5, 60);
+    // cout<<"Iterative reversing: ";
+    // reverseIter(head);
+    // displayLinkedList(head);
+    // cout<<endl;
 
+    // cout<<"Recursive reversing: ";
+    // reverseRecur(NULL, head);
+    // displayLinkedList(head);
+
+    linkedlist* res = new linkedlist();
+    res->data = 1231;
+    head = res;
+    cout<<res->data;
+
+    res = convertNumToLinkedList(res,807);
+    res = res->next;
     displayLinkedList(head);
 
 

@@ -1,54 +1,40 @@
-//The problem is not solved yet
-//Need to change many things
-
-struct ListNode {
-     int val;
-      ListNode *next;
-      ListNode() : val(0), next(NULL) {}
-      ListNode(int x) : val(x), next(NULL) {}
-      ListNode(int x, ListNode *next) : val(x), next(next) {}
- };
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        int num1=0, num2=0;
-        int counter=1;
-        int flag1=1, flag2=1;
-        while(flag1!=0 && flag2!=0)
+        ListNode* result = NULL;
+        ListNode* t;
+        t=result;
+        int carry=0;
+        while(l1 || l2)
         {
-            if(l1!=NULL)
-            {
-                num1 = num1 + counter*(l1 -> val);
-                l1 = l1 -> next;
-            }
-            else
-            {
-                flag1 = 0;
-            }
-            if(l2!=NULL)
-            {
-                num2 = num2 + counter*(l2 -> val);
-                l2 = l2 -> next;
-            }
-            else
-            {
-                flag2 = 0;
-            }
+            int sum = (l1?(l1->val):0 )+ (l2?(l2->val):0) + carry;
+            carry = sum/10;
             
+            if(result == NULL)
+            {
+                result = new ListNode(sum%10);
+                t = result;
+            }
+            else
+            {
+                ListNode *temp = new ListNode(sum%10);
+                t->next = temp;
+                t = temp;
+                //result->next = new ListNode(sum/10+carry);
+                
+            }
+                  
+            l1=l1?l1->next:NULL;
+            l2=l2?l2->next:NULL;
+                
         }
-        
-        ListNode* res = new ListNode();
-        
-        int result = num1 + num2;
-        while(result > 0)
+        if(carry!=0)
         {
-            res -> val = result%10;
-            result = result/10;
-            res = res -> next;
+             t->next = new ListNode(carry);
+           
+               
         }
         
-        return res;
-        
+        return result;
     }
-    
 };
