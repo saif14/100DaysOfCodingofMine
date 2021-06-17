@@ -1,3 +1,7 @@
+17-06-2021
+1. Linkedlist Covered upto 35
+2. Solved another leetCode problem 2.2_AddNumbers.cpp
+
 16-06-2021
 1. Linkedlist Covered upto 31 --> reversing a linked linkedlist
 
