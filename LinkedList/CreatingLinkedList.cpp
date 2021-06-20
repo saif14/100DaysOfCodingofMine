@@ -227,6 +227,7 @@ void reverseRecur(linkedlist *q, linkedlist *curPointer)
 
 linkedlist * convertNumToLinkedList(linkedlist *res, int n)
 {
+    
     while(n > 0)
         {
             linkedlist *temp = new linkedlist();
