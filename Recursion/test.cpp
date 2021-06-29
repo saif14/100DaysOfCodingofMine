@@ -6,8 +6,9 @@ using namespace std;
 
 int main()
 {
-    int *p = new int[5];
-    p[0] = 5;
-    p[2] = 7;
-    cout<<p[1];
+    enum alp  {a=1, b=2};
+
+    alp bb;
+    a = a+1;
+    cout<<a;
 }
