@@ -1,4 +1,5 @@
 #include<iostream>
+#include<bits/stdc++.h>
 
 using namespace std;
 
@@ -6,9 +7,6 @@ using namespace std;
 
 int main()
 {
-    enum alp  {a=1, b=2};
-
-    alp bb;
-    a = a+1;
-    cout<<a;
+    cout<<abs('c'-'a')<<endl;
+    cout<<abs('a'-'c')<<endl;
 }
