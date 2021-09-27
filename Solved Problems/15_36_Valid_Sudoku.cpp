@@ -2,14 +2,11 @@
 
 using namespace std;
 
-bool isValidSudoku(vector<vector<char>> &board)
-{
-
-    //checking row duplicate
-
-    for (int i = 0; i < 9; i++)
+bool isValidSudoku(vector<vector<char>>& board) {
+        //cout<<"row chcking"<<endl;
+        for (int i = 0; i < 9; i++)
     {
-        vector<int> r(9);
+        map<int,int> r;
         for (int j = 0; j < 9; j++)
         {
             if (board[i][j] == '.')
@@ -18,11 +15,13 @@ bool isValidSudoku(vector<vector<char>> &board)
             if (r[board[i][j]] > 2)
                 return false;
         }
+             
     }
     //column check
+        cout<<"col chcking"<<endl;
     for (int j = 0; j < 9; j++)
     {
-        vector<int> r(9);
+        map<int,int> r;
         for (int i = 0; i < 9; i++)
         {
             if (board[i][j] == '.')
@@ -34,19 +33,20 @@ bool isValidSudoku(vector<vector<char>> &board)
     }
 
     //cell check
+        cout<<"cell chcking"<<endl;
     int k = 0;
     int m = 0;
     int i = 0;
     int j = 0;
     for (i = m; i < m + 3;)
     {
-        vector<int> r(3);
+        int r[10]={0};
         for (j = k; j < k + 3; j++)
         {
             if (board[i][j] == '.')
                 continue;
             r[board[i][j] - '0']++;
-            if (r[board[i][j]] > 2)
+            if (r[board[i][j] - '0'] > 2)
                 return false;
         }
         i++;
@@ -70,8 +70,7 @@ bool isValidSudoku(vector<vector<char>> &board)
             break;
     }
     return true;
-}
-
+    }
 int main()
 {
 }
