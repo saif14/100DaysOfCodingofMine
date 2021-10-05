@@ -12,29 +12,6 @@ struct ListNode
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-// ListNode *mergeTwoLists(ListNode *l1, ListNode *l2)
-// {
-//     ListNode *resultList = new ListNode();
-//     ListNode *temp = resultList;
-//     temp->val = l1->val;
-//     while(l1 || l2)
-//     {
-//         if(temp->val <= l1->val)
-//         {
-//             temp->val = l1->val;
-//             temp = temp->next;
-//             l1 = l1->next;
-//         }
-//         else
-//         {
-//             temp->val = l2->val;
-//             temp = temp->next;
-//             l1 = l2->next;
-//         }
-//     }
-
-//     return resultList;
-// }
 
 ListNode *mergeTwoLists(ListNode *l1, ListNode *l2)
 {
