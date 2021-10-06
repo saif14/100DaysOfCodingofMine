@@ -4,6 +4,8 @@ using namespace std;
 
 int main()
 {
-	cout<< 3- (4%3);
+	map<int, int> c ;
+	// c[-100]++;
+	cout<<c[-100];
 }
 
