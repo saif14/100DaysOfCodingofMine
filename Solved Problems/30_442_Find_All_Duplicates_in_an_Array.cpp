@@ -34,37 +34,13 @@ vector<int> findDuplicates2(vector<int> &nums)
         }
         nums[abs(num) - 1] *= -1;
     }
-    //         for (auto num : nums)
-    //             nums[abs(num) - 1] *= -1;
-
-    //         for (auto num : nums)
-    //             if (nums[abs(num) - 1] > 0) {
-    //                 ans.push_back(abs(num));
-    //                 nums[abs(num) - 1] *= -1;
-    //             }
-
     return ans;
-
-    //         vector<int> ret;
-
-    //         int i = 0, N = nums.size();
-
-    //         for (int i = 0; i < nums.size();++i) {
-    //             while (nums[nums[i]-1] != nums[i]) {
-    //                 swap(nums[nums[i]-1], nums[i]);
-    //             }
-    //         }
-    //         for (int i = 0; i < nums.size();++i) {
-    //             if (nums[i] != i + 1 && nums[nums[i] - 1] == nums[i])
-    //                 ret.push_back(nums[i]);
-    //         }
-    //         return ret;
 }
 
 int main()
 {
-    vector<int> a = {1};
-    vector<int> res = findDuplicates(a);
+    vector<int> a = {40,30,20,70,80,20,30,10};
+    vector<int> res = findDuplicates2(a);
     for (auto i : res)
     {
         cout << i << " ";

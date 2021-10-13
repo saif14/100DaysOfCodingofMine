@@ -53,14 +53,15 @@ ListNode *deleteDuplicates(ListNode *head)
 
 int main()
 {
-    ListNode *first = NULL;
-    push(first, 4);
+     ListNode * first = NULL;
     push(first, 1);
-    push(first, 5);
     push(first, 1);
-    push(first, 4);
     push(first, 3);
+    push(first, 4);
+    push(first, 4);
+    push(first, 5);
 
-    ListNode *res = deleteDuplicates(first);
+    print(first);
+    ListNode* res = deleteDuplicates(first);
     print(res);
 }
