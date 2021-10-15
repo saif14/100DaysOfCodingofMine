@@ -7,6 +7,8 @@ using namespace std;
 
 int main()
 {
-    cout<<abs('c'-'a')<<endl;
-    cout<<abs('a'-'c')<<endl;
+    enum direction {East, West, North, South};
+
+    direction dir = South;
+    cout<<dir;
 }
