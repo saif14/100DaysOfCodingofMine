@@ -57,6 +57,14 @@ struct ListNode
 }
 int main()
 {
+<<<<<<< HEAD
+    enum direction {East, West, North, South};
+
+    direction dir = South;
+    cout<<dir;
+}
+=======
 
 
 }
+>>>>>>> cd1b56ad936671fe5b7e6854bccd09d816df741f
