@@ -32,13 +32,18 @@ bool Graph::DFS_recur(int s, vector<node_states> visited)
     
     for (auto u : adjList[s])
     {
-        if (!visited[u])
+        if(visited[u] == INSTACK) return true;
+        if (visited[u] == UNIVISITED && DFS_recur(u, visited))
         {
-            DFS_recur(u, visited);
+           return true;
         }
     }
+    visited[s] = VISITED;
+    return false;
    
 }
+
+//For Directed Grpah
 bool Graph::findCycleInGrpah(int s)
 {
     vector<node_states> visited(numbOfVertex, UNIVISITED);
@@ -56,8 +61,9 @@ int main()
     g.add_edge(0, 1);
     g.add_edge(0, 3);
     g.add_edge(1, 2);
-    g.add_edge(3, 2);
     g.add_edge(3, 4);
+    g.add_edge(4, 0);
+    g.add_edge(4, 1);
 
-    g.findCycleInGrpah(0);
+    cout<<boolalpha<<g.findCycleInGrpah(0);
 }
