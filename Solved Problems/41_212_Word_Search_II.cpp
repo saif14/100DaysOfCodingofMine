@@ -2,52 +2,79 @@
 
 using namespace std;
 
-bool dfs(vector<vector<char>> &board, string &word, int i, int j, int idx, vector<vector<bool>> &visited)
+class trie
 {
-    if (idx == word.length() - 1)
-        return true;
-    visited[i][j] = true;
-    if (i > 0 && !visited[i - 1][j] && board[i - 1][j] == word[idx + 1] && dfs(board, word, i - 1, j, idx + 1, visited))
-        return true;
-    if (i < board.size() - 1 && !visited[i + 1][j] && board[i + 1][j] == word[idx + 1] && dfs(board, word, i + 1, j, idx + 1, visited))
-        return true;
-    if (j > 0 && !visited[i][j - 1] && board[i][j - 1] == word[idx + 1] && dfs(board, word, i, j - 1, idx + 1, visited))
-        return true;
-    if (j < board[0].size() - 1 && !visited[i][j + 1] && board[i][j + 1] == word[idx + 1] && dfs(board, word, i, j + 1, idx + 1, visited))
-        return true;
-    visited[i][j] = false;
-    return false;
-}
+public:
+    trie *children[26];
+    bool endOfWord;
 
-bool exist(vector<vector<char>> &board, string word)
-{
-    int r = board.size();
-    int c = board[0].size();
-
-    vector<vector<bool>> visited(r, vector<bool>(c, false));
-
-    for (int i = 0; i < r; i++)
+    trie() : endOfWord(false)
     {
-        for (int j = 0; j < c; j++)
+        for (int i = 0; i < 26; i++)
         {
-            if (board[i][j] == word[0] && dfs(board, word, i, j, 0, visited))
-                return true;
+            children[i] = nullptr;
         }
     }
-    return false;
+
+    void insert(string word)
+    {
+        trie *curr = this;
+        for (char c : word) 
+        {
+            if (curr->children[c - 'a'] == nullptr)
+                curr->children[c - 'a'] = new trie();
+            curr = curr->children[c - 'a'];
+        }
+        curr->endOfWord = true;
+    }
+};
+
+void dfs(vector<vector<char>> &board, int i, int j, set<string> &res, trie *t, string s)
+{
+    char c = board[i][j];
+    if (c == '$')
+        return;
+    board[i][j] = '$';
+    trie *tr = t->children[c - 'a'];
+    if (tr)
+    {
+        string ss = s + c;
+        if (tr->endOfWord)
+            res.insert(ss);
+
+        if (i < board.size() - 1)
+            dfs(board, i + 1, j, res, tr, ss);
+        if (j < board[0].size() - 1)
+            dfs(board, i, j + 1, res, tr, ss);
+        if (i > 0)
+            dfs(board, i - 1, j, res, tr, ss);
+        if (j > 0)
+            dfs(board, i, j - 1, res, tr, ss);
+    }
+    board[i][j] = c;
 }
 
 vector<string> findWords(vector<vector<char>> &board, vector<string> &words)
 {
-
-    vector<string> res;
-
-    for (auto w : words)
+    if (words.size() == 0)
+        return {};
+    trie t;
+    for (auto str : words)
     {
-        if (exist(board, w))
-            res.push_back(w);
+        t.insert(str);
     }
-    return res;
+    set<string> res;
+    for (int i = 0; i < board.size(); i++)
+    {
+
+        for (int j = 0; j < board[0].size(); j++)
+        {
+
+            dfs(board, i, j, res, &t, "");
+        }
+    }
+    vector<string> result_vec(res.begin(), res.end());
+    return result_vec;
 }
 
 int main()

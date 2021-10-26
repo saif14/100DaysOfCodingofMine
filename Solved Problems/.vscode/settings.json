@@ -39,6 +39,7 @@
         "algorithm": "cpp",
         "xtree": "cpp",
         "queue": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "unordered_set": "cpp"
     }
 }
