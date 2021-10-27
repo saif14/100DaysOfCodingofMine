@@ -55,7 +55,7 @@ void sortColors(vector<int> &nums)
 
 int main()
 {
-    vector<int> nums{2, 0, 2, 1, 1, 0};
+    vector<int> nums{2, 0, 2, 1,1};
     sortColors(nums);
     for (int i : nums)
     {

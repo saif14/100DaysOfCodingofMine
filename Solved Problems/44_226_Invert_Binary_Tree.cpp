@@ -12,18 +12,18 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-TreeNode* dfs(TreeNode* t)
-{
-    TreeNode* tmp = dfs(t->left);
-    t->left = dfs(t->right);
-    t->right = tmp;
-}
-
 TreeNode *invertTree(TreeNode *root)
 {
-    dfs(root);
-}
 
+    if(!root) return root;
+    if(!root->left && !root->right) return root;
+    
+        TreeNode* t1 = invertTree(root->left);;
+        TreeNode* t2 = invertTree(root->right);
+        root->left = t2;
+        root->right = t1;
+        return root;  
+}
 
 int main()
 {
