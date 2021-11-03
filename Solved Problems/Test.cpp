@@ -2,29 +2,58 @@
 
 using namespace std;
 
-struct TreeNode
+string longestPalindrome(string s)
 {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-};
+    if (s.size() == 1)
+        return s;
+    int max_len = INT_MIN;
+    if (s.size() == 2)
+    {
+        if (s[0] == s[1])
+            return s;
+        else
+        {
+            string p  ="";
+            p += s.at(0);
+            return p;
+        }
+    }
+    string sn = "";
+    for (int i = 0; i < s.length(); i++)
+    {
+        sn = sn + '*' + s[i];
+    }
+    sn += '*';
+    string res;
+    for (int i = 1; i < sn.length() - 1; i++)
+    {
+        string tmp = "";
 
-TreeNode* dfs(TreeNode* t)
-{
-    TreeNode* tmp = dfs(t->left);
-    t->left = dfs(t->right);
-    t->right = tmp;
+        int p = i - 1, q = i + 1;
+        tmp += sn[i];
+        while (p >= 0 && q < sn.length() && sn[p] == sn[q])
+        {
+            string t = sn[p] + tmp;
+            t += sn[q];
+            tmp = t;
+            p--;
+            q++;
+        }
+        int c = tmp.length();
+        if (c > max_len)
+        {
+            max_len = tmp.length();
+            res = tmp;
+        }
+    }
+    res.erase(remove(res.begin(), res.end(), '*'), res.end());
+    return res;
 }
-
-TreeNode *invertTree(TreeNode *root)
-{
-    dfs(root);
-}
-
 
 int main()
 {
+    string s = "ab";
+   
+    s = longestPalindrome(s);
+    cout<<s;
 }
