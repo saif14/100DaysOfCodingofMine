@@ -12,6 +12,16 @@ struct TreeNode
 };
 TreeNode *root = nullptr;
 
+void inorder(TreeNode *r)
+{
+    if (!r)
+        return;
+
+    inorder(r->left);
+    cout << r->val << " ";
+    inorder(r->right);
+}
+
 void insert_level_order(int val, TreeNode *r)
 {
     if (!r)
@@ -46,16 +56,80 @@ void insert_level_order(int val, TreeNode *r)
     }
 }
 
-void inorder(TreeNode *r)
+void deleteNode(TreeNode *r, int val)
 {
     if (!r)
         return;
-    
-    
-    inorder(r->left);
-    cout << r->val << " ";
-    inorder(r->right);
+    if (!r->left && !r->right)
+    {
+        if (r->val == val)
+        {
+            delete root;
+            root = nullptr;
+        }
+
+        return;
+    }
+
+    TreeNode *keyNode = nullptr;
+    TreeNode *currNode = nullptr;
+    TreeNode *prevNode = r;
+
+    queue<TreeNode *> q;
+
+    if (r->val == val)
+    {
+        keyNode = r;
+        q.push(r->left);
+        q.push(r->right);
+        while (!q.empty())
+        {
+            currNode = q.front();
+            q.pop();
+            if (currNode->left)
+                q.push(currNode->left);
+            if (currNode->right)
+                q.push(currNode->right);
+        }
+        
+    }
+    else
+    {
+        q.push(r->left);
+        q.push(r->right);
+        while (!q.empty())
+        {
+            currNode = q.front();
+            q.pop();
+            
+            if (currNode->val == val)
+            {
+                keyNode = currNode;
+            }
+            if(!currNode->left->left && !currNode->left->right)
+            {
+                prevNode = currNode;
+            } 
+            if (currNode->left)
+                q.push(currNode->left);
+            if (currNode->right)
+                q.push(currNode->right);
+        }
+    }
+    if (keyNode)
+    {
+        keyNode->val = currNode->val;
+        if(prevNode->left == currNode)
+        prevNode->left = nullptr;
+        else
+        {
+            prevNode->right = nullptr;
+        }
+        currNode = nullptr;
+       
+    }
 }
+
 int main()
 {
     insert_level_order(10, root);
@@ -66,5 +140,8 @@ int main()
     insert_level_order(70, root);
     insert_level_order(60, root);
 
+    inorder(root);
+    deleteNode(root, 30);
+    cout<<endl;
     inorder(root);
 }
