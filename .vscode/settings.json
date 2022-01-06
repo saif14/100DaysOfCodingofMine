@@ -6,6 +6,7 @@
         "random": "cpp",
         "limits": "cpp",
         "valarray": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "xstring": "cpp"
     }
 }
