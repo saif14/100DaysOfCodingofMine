@@ -2,52 +2,29 @@
 
 using namespace std;
 
-bool wordPattern(string pattern, string s)
+int minEatingSpeed(vector<int> &piles, int h)
 {
-    map<string, char> m;
-
-    int c[26] = {};
-    string word = "";
-    s += " ";
-    int i = 0;
-    for (auto x : s)
+    int low = 1, high = 1000000000, k = 0;
+    while (low <= high)
     {
-        if (x == ' ')
+        k = (low + high) / 2;
+        int hourCount = 0;
+        for (int i = 0; i < piles.size(); i++)
         {
-            // cout << word << endl;
-            if (m.count(word) == 0)
-            {
-                if (c[pattern[i] - 'a'] != 0)
-                    return false;
-
-                m[word] = pattern[i];
-                c[pattern[i] - 'a']++;
-                i++;
-            }
-            else if (m[word] != pattern[i])
-            {
-                return false;
-            }
-            else
-                i++;
-            word = "";
+            hourCount += ceil(1.0 * piles[i] / k);
         }
-        else
+        if (hourCount > h)
         {
-            word += x;
+            low = k+ 1;
+        }
+        else 
+        {
+            high = k-1;
         }
     }
-
-    i--;
-    if(i != pattern.size()-1)
-    return false;
-
-    return true;
+    return low;
 }
 
 int main()
 {
-    cout << wordPattern("jquery","jquery");
-//     cout << wordPattern("abba", 
-// "dog cat cat dog");
 }
