@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+
+// Top Down Solution
 vector<bool> win = vector<bool>(100001);
 bool winnerSquareGame(int n)
 {
@@ -20,6 +22,29 @@ bool winnerSquareGame(int n)
     }
 
     return win[n] = check;
+}
+
+/**
+ * Bottom Up Soltuin
+ *
+ *
+ */
+
+bool winnerSquareGame2(int n)
+{
+    vector<bool> dp(n + 1);
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j * j <= i; j++)
+        {
+            if (!dp[i - j * j])
+            {
+                dp[i] = true;
+                break;
+            }
+        }
+    }
+    return dp[n];
 }
 
 int main()
