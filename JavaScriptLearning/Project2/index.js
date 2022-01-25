@@ -1,15 +1,36 @@
 let myLeads = []
 const inputEl = document.getElementById("input-el")
-const intputBtn = document.getElementById('input-btn')
+const inputBtn = document.getElementById("input-btn")
 const ulEl = document.getElementById("ul-el")
 
+// Get the leads from the localStorage - PS: JSON.parse()
+// Store it in a variable, leadsFromLocalStorage
+// Log out the variable
+localStorage.clear()
+let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
 
+console.log(leadsFromLocalStorage)
 
-intputBtn.addEventListener('click', function() {
+inputBtn.addEventListener("click", function() {
     myLeads.push(inputEl.value)
-    console.log(myLeads)
+    inputEl.value = ""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads))
+    renderLeads()
+
+    // To verify that it works:
+    console.log(localStorage.getItem("myLeads"))
 })
 
-for (let i = 0; i < myLeads.length; i++) {
-    ulEl.textContent = myLeads[i]
+function renderLeads() {
+    let listItems = ""
+    for (let i = 0; i < myLeads.length; i++) {
+        listItems += `
+            <li>
+                <a target='_blank' href='${myLeads[i]}'>
+                    ${myLeads[i]}
+                </a>
+            </li>
+        `
+    }
+    ulEl.innerHTML = listItems
 }
