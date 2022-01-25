@@ -1,36 +1,14 @@
 #include<stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 
-// declaring recursive function
-char* reverse(char* str);
-
-void main()
+void  reverseString(char *str)
 {
-    int i, j, k;
-    char str[100];
-    char *rev;
-    printf("Enter the string:\t");
-    scanf("%s", str);
-    printf("The original string is: %s\n", str);
-    rev = reverse(str);
-    printf("The reversed string is: %s\n", rev);
-    getch();
-}
-
-// defining the function
-char* reverse(char *str)
-{
-    char *start = str;
-    int len = 0;
     int startIdx = 0;
-    while(*start !='\0')
-    {
-        start++;
-        len++;
-    }
-    int endIdx = len;
+    int endIdx = strlen(str)-1;
 
-     while (startIdx < endIdx)
+    while (startIdx < endIdx)
     {
         str[startIdx] ^= str[endIdx];
         str[endIdx] ^= str[startIdx];
@@ -38,5 +16,19 @@ char* reverse(char *str)
         startIdx++;
         endIdx--;
     }
-    return str;
+
 }
+
+
+void main()
+{
+
+    char str[] = "ABCD";
+    reverseString(str);
+
+    if(!strcmp(str, "DCBA"))
+    {
+        printf("Hello World!");
+    }
+}
+
