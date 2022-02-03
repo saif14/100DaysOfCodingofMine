@@ -1,8 +1,8 @@
-import Header from "./Header"
+import Header from "./Header.js" 
 
 const page = (
   <div>
-    <Header />
+    {/* <Header /> */}
     <MainComponent />
     <Footer />
   </div>
