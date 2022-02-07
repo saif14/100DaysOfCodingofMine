@@ -41,6 +41,11 @@ nav {
 main {
   padding: 57px 27px;
   color: white;
+  background-image: url(../public/logo512.png);
+  background-repeat: no-repeat;
+  background-size: 24%;
+  background-position: 116% 85%;
+  
 }
 
 .main--title {
@@ -62,4 +67,4 @@ main {
 .main--facts > li::marker {
   font-size: 1.4rem;
   color: #61DAFB;
-}
+} 
