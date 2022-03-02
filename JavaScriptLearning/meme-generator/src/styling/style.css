@@ -60,7 +60,14 @@ main{
     text-indent: 5px;
 }
 
+.meme{
+    display: flex;
+    align-content: center;
+}
 .meme-image{
-    max-width: 100%;
-    align-items: center;
+    /* display: flex; */
+    margin-top: 15px;
+    max-width: 50%;
+    
+    
 }
