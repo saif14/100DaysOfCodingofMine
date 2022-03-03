@@ -1,5 +1,12 @@
 {
   "dependencies": {
-    "lts": "^1.2.0"
+    "@sanity/client": "^3.1.0",
+    "@sanity/image-url": "^1.0.1",
+    "framer-motion": "^6.2.8",
+    "icons": "^1.0.0",
+    "lts": "^1.2.0",
+    "node-sass": "^7.0.1",
+    "react": "^17.0.2",
+    "react-icons": "^4.3.1"
   }
 }
