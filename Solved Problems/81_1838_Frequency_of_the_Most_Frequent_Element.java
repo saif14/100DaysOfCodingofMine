@@ -5,7 +5,8 @@ class Frequency_of_the_Most_Frequent_Element_81_1838 {
 
         Arrays.sort(nums);
         int l = 0, r = 0;
-        int maxFreq = 0, total = 0;
+        long maxFreq = 0;
+        long total = 0;
 
         while (r < nums.length) {
             total += nums[r];
