@@ -5,6 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch test",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "Solved Problems_50018b7"
+        },
+        {
+            "type": "java",
+            "name": "Launch Sliding_Window_Maximum_80_239_",
+            "request": "launch",
+            "mainClass": "Sliding_Window_Maximum_80_239_",
+            "projectName": "Solved Problems_50018b7"
+        },
+        {
             "name": "g++.exe - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",

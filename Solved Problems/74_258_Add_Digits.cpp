@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
+#include <iostream>
 
 using namespace std;
 
@@ -11,4 +12,5 @@ int addDigits(int num)
 
 int main()
 {
+    cout<<addDigits(9995);
 }
