@@ -1,7 +1,4 @@
-import java.util.Arrays;
-
-class test {
-
+public class Minimum_Number_of_Flips_82_1888 {
     public static int minFlips(String s) {
         int ln = s.length();
         s = s+ s;
@@ -37,5 +34,4 @@ class test {
     public static void main(String[] args) {
         System.out.println(minFlips("111000"));
     }
-
 }
