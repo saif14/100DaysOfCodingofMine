@@ -9,6 +9,13 @@
             "name": "Launch test",
             "request": "launch",
             "mainClass": "test",
+            "projectName": "Solved Problems_7553e7e8"
+        },
+        {
+            "type": "java",
+            "name": "Launch test",
+            "request": "launch",
+            "mainClass": "test",
             "projectName": "Solved Problems_50018b7"
         },
         {

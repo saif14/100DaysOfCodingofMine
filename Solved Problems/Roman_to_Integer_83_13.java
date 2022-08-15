@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Roman_to_Integer_83_13 {
     /**
      * @param s

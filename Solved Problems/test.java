@@ -1,41 +1,50 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 class test {
+    public static boolean checkInclusion(String s1, String s2) {
+        int[] s1_ar = new int[26];
+        int[] s2_ar = new int[26];
+        char[] s1_char = s1.toCharArray();
+        char[] s2_char = s2.toCharArray();
 
-    /**
-     * @param s
-     * @return
-     */
-    public static int romanToInt(String s) {
+        boolean res = false;
+
+        for(Character c: s1_char) {
+            s1_ar[c-'a']++;
+        }
+
+        int matches = 0;
+        int l = 0;
+        int r = 0;
+        int ln = s1_char.length;
         
-            char[] sn = s.toCharArray();
-            Map<Character, Integer> symbolMap = new HashMap<Character, Integer>();
-            symbolMap.put('I', 1);
-            symbolMap.put('V', 5);
-            symbolMap.put('X', 10);
-            symbolMap.put('L', 50);
-            symbolMap.put('C', 100);
-            symbolMap.put('D', 500);
-            symbolMap.put('M', 1000);
+        for(int i=0; i<ln; i++){
+            s2_ar[s2_char[i]-'a']++;
+        }        
+        for(int i=0; i<26; i++){
+            if(s2_ar[i] != s1_ar[i]) matches++;
+        }
+        matches = 26 - matches;
+        if(matches == 26) return true;
+        for(r = ln; r<s2_char.length; r++){
+            s2_ar[s2_char[l]-'a']--;
+            if(s2_ar[s2_char[l]-'a'] != s1_ar[s2_char[l]-'a']) matches--;
+            else matches++;
+            l++;
 
-            int res = symbolMap.get(sn[sn.length -1]);
-            
-            for(int i= sn.length-2; i>=0; i--){
-                if(symbolMap.get(sn[i]) < symbolMap.get(sn[i+1])){
-                    res -= symbolMap.get(sn[i]);
-                }
-                else{
-                    res += symbolMap.get(sn[i]);
-                }
+            s2_ar[s2_char[r]-'a']++;
+            if(s2_ar[s2_char[r]-'a'] != s1_ar[s2_char[r]-'a']) matches--;
+            else matches++;
 
-            }
-
-            return res;
+            if(matches == 26) {res = true; break;}
+        }
+        return res;
     }
 
     public static void main(String[] args) {
-        System.out.println(romanToInt("IX"));
+
+        boolean res =  checkInclusion("abc","bbbca");
+        System.out.println(res);
     }
 
 }
