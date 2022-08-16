@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Roman_to_Integer_83_13 {
+public class _83_13_Roman_to_Integer {
     /**
      * @param s
      * @return
