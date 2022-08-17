@@ -1,6 +1,4 @@
-import java.util.Arrays;
-
-class test {
+public class _84_567_Permutation_in_String {
     public static boolean checkInclusion(String s1, String s2) {
         if (s1.length() > s2.length())
         return false;
@@ -43,5 +41,4 @@ class test {
         boolean res = checkInclusion("a", "ab");
         System.out.println(res);
     }
-
 }
